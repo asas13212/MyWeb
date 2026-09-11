@@ -1,0 +1,334 @@
+
+@font-face {
+    font-family: "FangSong"; /* 自己起名字，后面font-family就用这个名字 */
+    src: url("./assets/fonts/仿宋_GB2312.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ================= 全局基础样式 ================= */
+
+/* 清除默认边距，统一盒模型 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 去掉链接下划线，链接继承文字颜色 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 页面整体背景（空白处）：页心以外的区域 */
+body {
+    background-color: #0F1924;   /* 空白处深色背景 */
+    font-family: "Microsoft Yahei", sans-serif;
+}
+
+
+/* ================= 顶部导航栏样式 ================= */
+
+/* ===== 导航栏容器 =====
+   1. display:flex 实现横向一行排列
+   2. align-items:center 让内部元素垂直居中
+   3. height:60px 固定高度
+   4. 深色背景 + 白色文字 */
+.navbar {
+    display: flex;             /* flex 布局，横向一行 */
+    align-items: center;       /* 内部元素垂直居中 */
+    height: 60px;              /* 导航栏高度 60px */
+    background-color:#0F1924; /* 深色背景 */
+    color: #ffffff;            /* 文字白色 */
+    padding: 0 24px;           /* 左右内边距，让两边留白 */
+}
+
+/* ===== Logo：位于最左侧 ===== */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-right: 40px;        /* 与后面菜单保持间距 */
+    transition: color 0.3s;    /* 颜色过渡动画 */
+    font-family: "FangSong";
+}
+
+/* Logo 悬浮变色 */
+.logo:hover {
+    color: #00e5ff;
+}
+
+/* ===== 导航菜单：横向水平排列 ===== */
+.nav-menu {
+    display: flex;             /* 菜单项横向排列 */
+    align-items: center;
+    gap: 24px;                 /* 菜单项之间间距 */
+}
+
+/* 菜单项（也用于登录）样式 */
+.nav-link {
+    font-size: 16px;
+    color: #ffffff;
+    padding: 6px 10px;         /* 增加可点击区域 */
+    transition: color 0.3s;    /* 颜色过渡 */
+}
+
+/* 悬浮变色效果 */
+.nav-link:hover {
+    color: #00e5ff;
+}
+
+/* 当前所处页面高亮（可选） */
+
+
+
+/* ===== 登录：推到最右侧 ===== */
+.login {
+    margin-left: auto;         /* 关键：把登录顶到最右端 */
+    font-weight: bold;
+}
+
+
+/* ================= 二级导航栏样式 ================= */
+
+/* 一级 + 二级导航所在容器：作为二级导航绝对定位的参照 */
+.site-header {
+    position: relative;
+}
+
+/* ===== 二级导航栏容器 =====
+   1. position:absolute 脱离文档流，不抢占主内容空间（覆盖显示）
+   2. top:100% 紧贴在一级导航栏下边缘
+   3. z-index 盖在下方内容之上
+   4. 默认隐藏（max-height:0 + opacity:0 + overflow:hidden）
+   5. 悬停一级导航栏时整条滑出 */
+.sub-nav {
+    position: absolute;        /* 绝对定位，覆盖显示，不推动页面 */
+    top: 100%;                 /* 紧贴一级导航栏下边缘 */
+    left: 0;
+    width: 100%;               /* 占满整行宽度 */
+    z-index: 10;               /* 盖在下方内容之上 */
+    display: flex;             /* 5 个栏目横向排列 */
+    align-items: center;
+    gap: 28px;                 /* 栏目之间间距 */
+    padding: 0 24px;           /* 左右内边距（纯横向，不影响高度） */
+    background-color: #3D4450; /* 稍亮一点的深色，与一级区分 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); /* 悬浮阴影，增强覆盖感 */
+    max-height: 0;             /* 初始高度为 0，隐藏 */
+    overflow: hidden;          /* 隐藏超出部分 */
+    opacity: 0;                /* 初始透明 */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* 展开动画 */
+}
+
+/* 悬停整个顶部导航栏（一级 + 二级所在容器）时，二级导航栏展开 */
+.site-header:hover .sub-nav {
+    max-height: 60px;          /* 展开后的最大高度（够显示一行链接） */
+    opacity: 1;                /* 变为不透明 */
+}
+
+/* 二级导航栏链接 */
+.sub-nav-link {
+    padding: 14px 0;           /* 上下留白，撑出二级栏高度 */
+    font-size: 15px;
+    color: #ffffff;
+    transition: color 0.3s;    /* 颜色过渡 */
+}
+
+/* 二级导航链接悬浮变色 */
+.sub-nav-link:hover {
+    color: #00e5ff;
+}
+
+
+/* ================= 页心（页面主体内容区域）================= */
+
+/* ===== 页心外层容器 =====
+   1. max-width:1200px 限制最大宽度
+   2. margin:0 auto     水平居中
+   3. padding 上下留白
+   4. 背景色与空白处区分 */
+.main {
+    max-width: 1200px;              /* 最大宽度 */
+    margin: 0 auto;                 /* 水平居中 */
+    padding: 24px 16px;             /* 上下左右内边距 */
+    background-color: #1f2733;      /* 页心背景色，与空白处区分 */
+    color: #ffffff;                 /* 页心文字白色 */
+    min-height: calc(100vh - 60px); /* 页心至少填满导航栏以下的屏幕高度 */
+}
+
+/* ================= 轮播图样式 ================= */
+
+/* 轮播容器：相对定位，缩小宽度并居中，裁剪两侧超出的图片 */
+.carousel {
+    position: relative;
+    width: 88%;                   /* 比页心窄，两侧各留一点空间 */
+    margin: 0 auto;               /* 水平居中 */
+    overflow: hidden;             /* 裁剪两侧虚影超出的部分 */
+    border-radius: 8px;
+}
+
+/* 轮播轨道：横向排列所有图片，通过 transform 平移实现切换 */
+.carousel-track {
+    display: flex;
+    gap: 6px;                     /* 图片之间留较小间距，让虚影更紧凑 */
+    transition: transform 0.55s ease; /* 平滑切换动画 */
+}
+
+/* 每张轮播图：默认是两侧“虚影”状态，当前这张由 JS 加 .is-active 变清晰 */
+.carousel-slide {
+    flex: 0 0 72%;                /* 每张占 72% 宽，让两侧能露出前后图 */
+    height: 320px;                /* 轮播图高度（比之前小一点） */
+    object-fit: cover;            /* 图片铺满并裁剪，不变形 */
+    display: block;
+    background-color: #262626;    /* 图片未就位时的占位底色 */
+    border-radius: 8px;
+    transform: scale(0.85);       /* 缩小，形成前后图的虚影 */
+    opacity: 0.4;                 /* 半透明 */
+    filter: blur(2px);            /* 轻微模糊 */
+    transition: transform 0.55s ease, opacity 0.55s ease, filter 0.55s ease;
+}
+
+/* 当前显示的这张：放大到正常、清晰、不透明 */
+.carousel-slide.is-active {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* 左右箭头按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.carousel-btn:hover { background-color: rgba(0, 229, 255, 0.6); }
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+
+/* 底部圆点指示器 */
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.carousel-dot.active {
+    background-color: #00e5ff;    /* 当前项高亮 */
+}
+
+/* ================= 登录页样式 ================= */
+
+/* 登录区外层：居中显示卡片 */
+.auth-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 60px); /* 填满导航栏以下的屏幕高度 */
+    display: flex;
+    align-items: center;            /* 垂直居中 */
+    justify-content: center;        /* 水平居中 */
+    padding: 40px 16px;
+}
+
+/* 登录卡片 */
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #1f2733;      /* 卡片背景，与页心色一致 */
+    border-radius: 12px;
+    padding: 40px 32px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* 标题与副标题 */
+.auth-title {
+    font-size: 26px;
+    text-align: center;
+    color: #ffffff;
+}
+.auth-sub {
+    margin: 8px 0 28px;
+    text-align: center;
+    font-size: 14px;
+    color: #8b93a7;                 /* 灰色副标题 */
+}
+
+/* 表单项 */
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #c9d1e0;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #2a3548;
+    border-radius: 8px;
+    background-color: #121826;      /* 输入框深色背景 */
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+    border-color: #00e5ff;          /* 聚焦时青色边框 */
+}
+
+/* 错误提示 */
+.form-error {
+    min-height: 20px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #ff5470;                 /* 红色错误提示 */
+}
+
+/* 登录按钮 */
+.btn-primary {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00e5ff, #7c4dff);
+    color: #04121a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 底部提示 */
+.auth-tip {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #636c7d;
+    line-height: 1.7;
+}

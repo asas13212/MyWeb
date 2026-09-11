@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - GameWorld</title>
+    <!-- 引入 css 文件夹中的外部样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ============ 顶部导航栏（与首页一致） ============ -->
+    <header class="site-header">
+        <!-- 一级导航栏 -->
+        <div class="navbar">
+            <a href="index.html" class="logo">GameWorld</a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="ranking.html" class="nav-link">排行榜</a>
+                <a href="about.html" class="nav-link">关于我们</a>
+            </nav>
+
+            <a href="login.html" class="nav-link login">登录</a>
+        </div>
+
+        <!-- 二级导航栏：悬停一级导航栏时整条滑出 -->
+        <nav class="sub-nav">
+            <a href="#" class="sub-nav-link">最新游戏</a>
+            <a href="#" class="sub-nav-link">热门排行</a>
+            <a href="#" class="sub-nav-link">游戏分类</a>
+            <a href="#" class="sub-nav-link">游戏攻略</a>
+            <a href="#" class="sub-nav-link">帮助中心</a>
+        </nav>
+    </header>
+
+    <!-- ============ 登录表单区 ============ -->
+    <main class="auth-main">
+        <div class="auth-card">
+            <h2 class="auth-title">登录</h2>
+            <p class="auth-sub">登录 GameWorld，开启你的游戏之旅</p>
+
+            <form id="loginForm" novalidate>
+                <!-- 用户名 -->
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名" autocomplete="username">
+                </div>
+
+                <!-- 密码 -->
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码" autocomplete="current-password">
+                </div>
+
+                <!-- 错误提示 -->
+                <p class="form-error" id="formError"></p>
+
+                <!-- 登录按钮 -->
+                <button type="submit" class="btn-primary">登 录</button>
+            </form>
+
+            <p class="auth-tip">本站为网络实训演示项目，输入任意用户名密码即可登录。</p>
+        </div>
+    </main>
+
+    <!-- 引入登录表单脚本 -->
+    <script src="js/login.js"></script>
+
+</body>
+</html>

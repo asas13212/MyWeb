@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的页面</title>
+    <title>GameWorld</title>
+    <!-- 引入 css 文件夹中的外部样式表 -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    HelloWorld
+
+    <!-- ============ 顶部导航栏 ============ -->
+    <header class="site-header">
+        <!-- 一级导航栏 -->
+        <div class="navbar">
+            <!-- 1. Logo（最左侧） -->
+            <a href="index.html" class="logo">GameWorld</a>
+
+            <!-- 2. 导航菜单（logo 之后依次水平排列） -->
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="ranking.html" class="nav-link">排行榜</a>
+                <a href="about.html" class="nav-link">关于我们</a>
+            </nav>
+
+            <!-- 3. 登录（最右侧） -->
+            <a href="login.html" class="nav-link login">登录</a>
+        </div>
+
+        <!-- 二级导航栏：悬停一级导航栏时整条滑出 -->
+        <nav class="sub-nav">
+            <a href="#" class="sub-nav-link">最新游戏</a>
+            <a href="#" class="sub-nav-link">热门排行</a>
+            <a href="#" class="sub-nav-link">游戏分类</a>
+            <a href="#" class="sub-nav-link">游戏攻略</a>
+            <a href="#" class="sub-nav-link">帮助中心</a>
+        </nav>
+    </header>
+
+    <!-- ============ 页心（页面主体内容区域） ============ -->
+    <main class="main">
+
+        <!-- ===== 轮播图（页心顶部） ===== -->
+        <div class="carousel">
+            <!-- 轮播轨道：放置所有图片，通过平移实现切换 -->
+            <div class="carousel-track">
+                <img class="carousel-slide" src="assets/img/scroll0.png" alt="轮播图 1">
+                <img class="carousel-slide" src="assets/img/scroll1.png" alt="轮播图 2">
+                <img class="carousel-slide" src="assets/img/scroll2.png" alt="轮播图 3">
+            </div>
+
+            <!-- 左右切换箭头 -->
+            <button class="carousel-btn prev" type="button">&#8249;</button>
+            <button class="carousel-btn next" type="button">&#8250;</button>
+
+            <!-- 底部圆点指示器（由 JS 自动生成） -->
+            <div class="carousel-dots"></div>
+        </div>
+
+        <!-- 页心下部：先留空，后续再补充内容 -->
+
+    </main>
+
+<!-- 轮播图脚本 -->
+    <script src="js/carousel.js"></script>
+
 </body>
 </html>
